@@ -1,25 +1,21 @@
 const Page = require('./page');
 
 /**
- * Inventory Page
+ * Product Page
  *
- * selectors
- *   get secondaryTitle()
- *   get shoppingCart()
- *   get shoppingCartLink()
- *   get firstItemButton()
+ * selectors:
+ *   secondaryTitle()
+ *   shoppingCart()
+ *   shoppingCartLink()
+ *   firstItemButton()
  *
  * methods:
  *   async shoppingCartHasItems()
  *   async clickAddToCartButtonOnFirstItem()
- *   async clickImageOnSecondItem()
  *   async clickShoppingCartLink()
  */
+class ProductPage extends Page {
 
-class InventoryPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
     get secondaryTitle() {
         return $('#header_container > div.header_secondary_container > span')
     }
@@ -51,16 +47,6 @@ class InventoryPage extends Page {
     }
 
     /**
-     * clicks image on the second item in the list
-     */
-    async clickImageOnSecondItem() {
-        const items = $('div.inventory_list').$$('div.inventory_item');
-        const randomIndex = Math.floor((Math.random() * items.length));
-        await items[1].$('div.inventory_item_img > a').click();
-        await $('div.inventory_details_desc_container button').click();
-    }
-
-    /**
      * clicks the shopping cart link
      */
     async clickShoppingCartLink() {
@@ -75,4 +61,4 @@ class InventoryPage extends Page {
     }
 }
 
-module.exports = new InventoryPage();
+module.exports = new ProductPage();

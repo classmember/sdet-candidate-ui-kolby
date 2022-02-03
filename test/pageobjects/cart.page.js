@@ -1,22 +1,20 @@
 const Page = require('./page');
 
 /**
- * Inventory Page
+ * Cart Page
  *
- * selectors
- *   get secondaryTitle()
- *   get shoppingCart()
- *   get shoppingCartLink()
- *   get firstItemButton()
+ * selectors:
+ *   secondaryTitle()
+ *   continueShoppingButton()
+ *   checkoutButton()
+ *   cartItems()
  *
  * methods:
- *   async shoppingCartHasItems()
  *   async clickAddToCartButtonOnFirstItem()
  *   async clickImageOnSecondItem()
- *   async clickShoppingCartLink()
+ *
  */
-
-class InventoryPage extends Page {
+class CartPage extends Page {
     /**
      * define selectors using getter methods
      */
@@ -24,23 +22,16 @@ class InventoryPage extends Page {
         return $('#header_container > div.header_secondary_container > span')
     }
 
-    get shoppingCart() {
-        return $('#shopping_cart_container')
+    get continueShoppingButton() {
+        return $('button#continue-shopping')
     }
 
-    get shoppingCartLink() {
-        return $('a.shopping_cart_link')
+    get checkoutButton() {
+        return $('button#checkout')
     }
 
-    get firstItemButton() {
-        return $('div.inventory_list > div.inventory_item button')
-    }
-
-    /**
-     * check if shopping cart is empty by checking for shopping_cart_badge span element
-     */
-    async shoppingCartHasItems() {
-        return this.shoppingCart.includes('class="shopping_cart_badge"');
+    get cartItems() {
+        return $$('div.cart_list > div.cart_item')
     }
 
     /**
@@ -61,10 +52,17 @@ class InventoryPage extends Page {
     }
 
     /**
-     * clicks the shopping cart link
+     * clicks the continue shopping button
      */
-    async clickShoppingCartLink() {
-        await this.shoppingCartLink.click();
+    async clickContinueShoppingButton() {
+        await this.continueShoppingButton.click();
+    }
+
+    /**
+     * clicks the checkout button
+     */
+    async clickCheckoutButton() {
+        await this.checkoutButton.click();
     }
 
     /**
@@ -75,4 +73,4 @@ class InventoryPage extends Page {
     }
 }
 
-module.exports = new InventoryPage();
+module.exports = new CartPage();

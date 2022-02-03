@@ -1,7 +1,16 @@
 const Page = require('./page');
 
 /**
- * sub page containing specific selectors and methods for a specific page
+ * Login Page
+ *
+ * selectors:
+ *   inputUsername()
+ *   inputPassword()
+ *   bynSubmit()
+ *
+ * methods:
+ *   login(username, password)
+ *
  */
 class LoginPage extends Page {
     /**
